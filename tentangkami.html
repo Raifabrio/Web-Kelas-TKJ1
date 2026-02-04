@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="id" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tentang Kami - C Engineering 1</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Fredoka+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    * {
+      font-family: 'Poppins', sans-serif;
+    }
+    .fredoka {
+      font-family: 'Fredoka One', cursive;
+    }
+    .gradient-bg {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    }
+    .card-gradient {
+      background: linear-gradient(145deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .nav-btn {
+      transition: all 0.3s ease;
+    }
+    .nav-btn:hover {
+      transform: translateY(-2px);
+    }
+    .nav-btn.active {
+      background: linear-gradient(135deg, #e94560, #ff6b6b);
+      color: white;
+    }
+    .option-btn {
+      transition: all 0.3s ease;
+    }
+    .option-btn:hover {
+      transform: translateX(5px);
+      background: rgba(233, 69, 96, 0.2);
+    }
+    .pulse {
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    .fade-in {
+      animation: fadeIn 0.5s ease-in;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .glow {
+      box-shadow: 0 0 20px rgba(233, 69, 96, 0.5);
+    }
+    .progress-bar {
+      transition: width 0.5s ease;
+    }
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: rgba(255,255,255,0.1);
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #e94560;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+
+<body class="h-full gradient-bg text-white overflow-auto">
+  <div id="app" class="min-h-full flex flex-col">
+
+    <header class="py-4 px-4 md:px-8 border-b border-white/10">
+      <div class="max-w-6xl mx-auto text-center">
+        <div class="absolute top-4 left-4">
+          <button 
+            onclick="window.location.href='Anggota kelas.html'" 
+            class="bg-white/10 hover:bg-white/20 text-white rounded-full p-2 transition-all"
+            title="Kembali ke Anggota Kelas">
+            <i class="fa-solid fa-arrow-left text-lg"></i>
+          </button>
+        </div>
+        <h1 id="main-title" class="fredoka text-2xl md:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-500">Tentang Kami</h1>
+        <p class="text-gray-300 mt-1 text-sm md:text-base">C Engineering 1 - XII TKJ 1</p>
+        <p id="author-text" class="text-yellow-400 text-xs md:text-sm mt-1">XII TKJ 1 for everyone</p>
+      </div>
+    </header>
+
+    <main class="flex-1 px-4 py-6 overflow-auto">
+      <div class="max-w-6xl mx-auto">
+
+        <section id="section-home" class="fade-in">
+          <div class="text-center mb-8">
+            <div class="text-6xl md:text-8xl mb-4 text-cyan-400">
+              <i class="fa-solid fa-users"></i>
+            </div>
+            
+            <h2 class="fredoka text-3xl md:text-4xl mb-4 text-yellow-400">Selamat Datang!</h2>
+            <p class="text-gray-300 max-w-2xl mx-auto text-sm md:text-base">Kami adalah XII TKJ 1, kelas yang berisi siswa-siswa Teknik Komputer dan Jaringan yang aktif, solid, dan terus belajar berkembang.<br><br>
+            Website ini memuat berbagai fitur seperti informasi kelas, jadwal pelajaran, galeri kegiatan, data anggota kelas, serta media pembelajaran interaktif yang mendukung proses belajar. </p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-6 mt-8">
+            
+            <div class="card-gradient rounded-2xl p-6 hover:glow transition-all cursor-pointer" onclick="window.location.href='schedules.html'">
+              <div class="text-4xl mb-4 text-orange-400">
+                <i class="fa-solid fa-calendar-days"></i>
+              </div>
+              <h3 class="text-xl font-bold text-orange-400 mb-2">Informasi dan jadwal kelas</h3>
+              <p class="text-gray-300 text-sm">Lihat informasi kelas dan jadwal pelajaran</p>
+            </div>
+            
+            <div class="card-gradient rounded-2xl p-6 hover:glow transition-all cursor-pointer" onclick="window.location.href='gallery.html'">
+              <div class="text-4xl mb-4 text-pink-500">
+                <i class="fa-solid fa-images"></i>
+              </div>
+              <h3 class="text-xl font-bold text-pink-500 mb-2">Galeri kegiatan</h3>
+              <p class="text-gray-300 text-sm">Lihat berbagai kegiatan kelas yang telah dilakukan</p>
+            </div>
+            
+            <div class="card-gradient rounded-2xl p-6 hover:glow transition-all cursor-pointer" onclick="window.location.href='anggota kelas.html'">
+              <div class="text-4xl mb-4 text-emerald-400">
+                <i class="fa-solid fa-users"></i>
+              </div>
+              <h3 class="text-xl font-bold text-emerald-400 mb-2">Data anggota kelas</h3>
+              <p class="text-gray-300 text-sm">Lihat informasi lengkap tentang anggota kelas</p>
+            </div>
+            
+            <div class="card-gradient rounded-2xl p-6 hover:glow transition-all cursor-pointer" onclick="window.location.href='pesan anonim.html'">
+              <div class="text-4xl mb-4">
+                📝
+              </div>
+              <h3 class="text-xl font-bold text-yellow-400 mb-2">Pesan anonim sebagai wadah saran dan masukan</h3>
+              <p class="text-gray-300 text-sm">Kirimkan pesan anonim untuk memberikan saran dan masukan kepada kelas</p>
+            </div>
+
+          </div>
+
+          <div class="mt-8 card-gradient rounded-2xl p-6">
+            <h3 class="text-lg font-bold text-pink-400 mb-4">📚 Kompetensi yang Dikembangkan:</h3>
+            <ul class="space-y-2 text-gray-300 text-sm">
+              <li class="flex items-start gap-2"><span class="text-green-400">✓</span>Memahami dasar Teknologi Informasi dan Jaringan </li>
+              <li class="flex items-start gap-2"><span class="text-green-400">✓</span>Menggunakan media digital sebagai sarana pembelajaran  </li>
+              <li class="flex items-start gap-2"><span class="text-green-400">✓</span> Melatih pemanfaatan teknologi untuk pembelajaran interaktif </li>
+              <li class="flex items-start gap-2"><span class="text-green-400">✓</span>  Mengelola dan menyajikan informasi kelas secara online  </li>
+            </ul>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+    <footer class="py-4 px-4 border-t border-white/10 text-center">
+      <p id="footer-text" class="text-xs md:text-sm text-gray-400">© 2026 C Engineering 1. All Rights Reserved.</p>
+    </footer>
+
+  </div>
+
+  <script>
+    // Script kosong sesuai file asli
+  </script>
+
+</body>
+</html>

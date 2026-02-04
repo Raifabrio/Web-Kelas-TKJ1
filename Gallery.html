@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery - C Engineering 1</title>
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">  
+   <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <style>
+*
+ {
+      box-sizing: border-box;
+       font-family: "Inter", sans-serif;
+      margin: 0;
+      padding: 0;
+   
+    }
+
+ body {
+  min-height: 100vh;
+  background: 
+    linear-gradient(rgba(75, 43, 127, 0.75), rgba(13, 48, 84, 0.85)),
+    url('gallery/bacground.jpg'); /* path gambar sama kayak di utama.html */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow-x: hidden;
+  padding: 20px 20px 120px;
+  box-sizing: border-box;
+}
+
+
+  .bnav, /*biar kgk nge block text*/
+  .bnav *, 
+  .nav-item, 
+  .nav-item * {
+  -webkit-user-select: none !important; 
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+}
+
+    h1 {
+      font-size: 30px;
+      font-weight: 800;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 14px;
+      width: 100%;
+      max-width: 700px;
+    }
+
+    .gal-item {
+      height: 120px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .gal-item:hover {
+      background: rgba(255,255,255,0.15);
+      transform: scale(1.05);
+    }
+
+  /* transisi */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeUpText {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+h1 {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeUpText 700ms cubic-bezier(.22,.9,.35,1) forwards;
+  animation-delay: 0.2s;
+}
+
+
+.carousel {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 800ms cubic-bezier(.22,.9,.35,1) forwards;
+  animation-delay: 0.4s;
+}
+
+
+.gal-item {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 700ms cubic-bezier(.22,.9,.35,1) forwards;
+}
+
+
+.gal-item:nth-child(1) { animation-delay: 0.5s; }
+.gal-item:nth-child(2) { animation-delay: 0.6s; }
+.gal-item:nth-child(3) { animation-delay: 0.7s; }
+.gal-item:nth-child(4) { animation-delay: 0.8s; }
+.gal-item:nth-child(5) { animation-delay: 0.9s; }
+.gal-item:nth-child(6) { animation-delay: 1s; }
+.gal-item:nth-child(7) { animation-delay: 1.1s; }
+
+
+
+  .bnav {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 12px;
+  display: flex;
+  gap: 12px;
+  background: rgba(0, 0, 0, 0.35);
+  padding: 10px 14px;
+  border-radius: 30px;
+  backdrop-filter: blur(6px);
+}
+
+
+    @keyframes bgFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+  .carousel {
+  width: 100%;
+  max-width: 700px;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  margin-bottom: 30px;
+  animation: fadeUp 0.7s ease forwards;
+}
+
+.carousel-item img {
+  height: 250px;
+  object-fit: cover;
+  filter: brightness(0.85);
+}
+
+/* Caption di tengah bawah */
+.carousel-caption {
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  padding: 8px 14px;
+  bottom: 15px;
+}
+
+.carousel-caption h5 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.carousel-caption p {
+  font-size: 13px;
+  color: #ddd;
+  margin: 0;
+}
+
+/* ===== BOTTOM NAV ===== */
+.bnav {
+  position: fixed;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 34px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  padding: 10px 28px;
+  border-radius: 40px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.nav-item i {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  transition: all 0.3s ease;
+}
+
+.nav-item span {
+  font-size: 11px;
+  color: #e0e0e0;
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+/* Hover effect */
+.nav-item:hover i {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.1);
+}
+
+/* Tombol tengah (home) — sedikit lebih mencolok */
+.nav-item.center i {
+  background: rgba(255, 255, 255, 0.25);
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.25);
+  width: 46px;
+  height: 46px;
+  font-size: 20px;
+}
+
+.viewer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(4px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.viewer img {
+  max-width: 92%;
+  max-height: 85%;
+  border-radius: 14px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.6);
+  animation: fadeZoom 0.3s ease;
+}
+
+@keyframes fadeZoom {
+  from { opacity: 0; transform: scale(0.85); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 28px;
+  font-size: 40px;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  user-select: none;
+}
+
+
+  </style>
+</head>  
+
+<body>
+
+
+ <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
+
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="gallery/slide1.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="gallery/slide2.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="gallery/slide3.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="gallery/slide4.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="gallery/slide5.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="gallery/slide6.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="gallery/40.jpeg" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+  <!-- POPUP gambar -->
+<div id="imgViewer" class="viewer">
+  <span class="close-btn">&times;</span>
+  <img id="viewerImg" src="">
+</div>
+
+  
+  <div class="gallery" id="gallery"></div>
+
+ <!-- Bottom nav -->
+<div class="bnav">
+  <div class="nav-item" onclick="window.location.href='Gallery.html'">
+    <i class="fa-regular fa-image"></i>
+    <span>Gallery</span>
+  </div>
+
+  <div class="nav-item center" onclick="window.location.href='utama.html'">
+    <i class="fa-solid fa-house"></i>
+  </div>
+
+  <div class="nav-item" onclick="window.location.href='Schedules.html'">
+    <i class="fa-regular fa-calendar"></i>
+    <span>Schedules</span>
+  </div>
+</div>
+  
+
+
+ <script>
+  const gallery = document.getElementById('gallery');
+
+  const images = [
+    'gallery/1.jpg',
+    'gallery/2.jpg',
+    'gallery/3.jpg',
+    'gallery/4.jpg',
+    'gallery/5.jpg',
+    'gallery/6.jpg',
+    'gallery/7.jpg',
+    'gallery/8.jpg',
+    'gallery/9.jpg',
+    'gallery/10.jpg',
+    'gallery/11.jpg',
+    'gallery/12.jpg',
+    'gallery/13.jpg',
+    'gallery/14.jpg',
+    'gallery/15.jpg',
+    'gallery/16.jpg',
+    'gallery/17.jpg',
+    'gallery/18.jpg',
+    'gallery/19.jpg',
+    'gallery/20.jpg',
+    'gallery/21.jpg',
+    'gallery/22.jpg',
+    'gallery/23.jpg',
+    'gallery/24.jpg',
+    'gallery/25.jpg',
+    'gallery/26.jpg',
+    'gallery/27.jpg',
+    'gallery/28.jpeg',
+    'gallery/29.jpeg',
+    'gallery/30.jpeg',
+    'gallery/31.jpeg',
+    'gallery/32.jpeg',
+    'gallery/33.jpeg',
+    'gallery/34.jpeg',
+    'gallery/35.jpeg',
+    'gallery/36.jpeg',
+    'gallery/37.jpeg',
+    'gallery/38.jpeg',
+    'gallery/39.jpeg',
+    'gallery/40.jpeg'
+
+    
+
+
+  ];
+
+
+
+  images.forEach(src => {
+    const d = document.createElement('div');
+    d.className = 'gal-item';
+
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = 'Foto';
+    img.style.width = '100%';
+    img.style.height = '100%';
+    img.style.objectFit = 'cover';
+    img.style.borderRadius = '14px';
+
+    d.appendChild(img);
+    gallery.appendChild(d);
+  });
+
+  const viewer = document.getElementById('imgViewer');
+const viewerImg = document.getElementById('viewerImg');
+const closeBtn = document.querySelector('.close-btn');
+
+// bikin foto bisa diklik
+document.querySelectorAll('.gal-item img').forEach(img => {
+  img.addEventListener('click', () => {
+    viewer.style.display = 'flex';
+    viewerImg.src = img.src;
+  });
+});
+
+// close viewer
+closeBtn.onclick = () => viewer.style.display = 'none';
+
+// klik luar gambar buat nutup
+viewer.addEventListener('click', e => {
+  if (e.target === viewer) viewer.style.display = 'none';
+});
+</script>
+
+
+</body>
+</html>
+

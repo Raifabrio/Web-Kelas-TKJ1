@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dadu Motivasi - C Engineering 1</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-color: #0f0f1f;
+      --accent-color: #00eeaa;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg-color);
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center; /* Konten jadi benar-benar di tengah layar */
+      padding: 20px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .section {
+      background: rgba(255, 255, 255, 0.05); /* Efek transparan senada dengan utama.html */
+      backdrop-filter: blur(10px);
+      padding: 40px 20px;
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+    }
+
+    h2 { 
+      color: var(--accent-color); 
+      margin-bottom: 10px; 
+      font-size: 24px;
+      font-weight: 800;
+    }
+
+    p.sub-text {
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 20px;
+    }
+
+    /* DADU 3D */
+    #dice-container {
+      width: 80px; height: 80px;
+      perspective: 600px;
+      margin: 30px auto;
+      cursor: pointer;
+    }
+
+    .dice {
+      width: 100%; height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.6s cubic-bezier(0.33, 0.9, 0.3, 1);
+    }
+
+    .face {
+      position: absolute; width: 80px; height: 80px;
+      background: #fff; border: 1px solid #ddd;
+      display: flex; align-items: center; justify-content: center;
+      backface-visibility: hidden; border-radius: 12px;
+    }
+
+    /* Posisi Sisi Dadu */
+    .face:nth-child(1) { transform: translateZ(40px); }
+    .face:nth-child(2) { transform: rotateY(180deg) translateZ(40px); }
+    .face:nth-child(3) { transform: rotateY(-90deg) translateZ(40px); }
+    .face:nth-child(4) { transform: rotateY(90deg) translateZ(40px); }
+    .face:nth-child(5) { transform: rotateX(90deg) translateZ(40px); }
+    .face:nth-child(6) { transform: rotateX(-90deg) translateZ(40px); }
+
+    .dot { width: 10px; height: 10px; background: #222; border-radius: 50%; position: absolute; }
+
+    #motivasi {
+      margin: 25px 0;
+      color: #ffcc00;
+      font-size: 16px;
+      line-height: 1.5;
+      font-style: italic;
+      min-height: 60px;
+    }
+
+    /* TOMBOL KEMBALI MODERN */
+    .btn-back {
+      display: block;
+      margin-top: 10px;
+      background: rgba(0, 238, 170, 0.1);
+      color: var(--accent-color);
+      border: 1px solid var(--accent-color);
+      padding: 12px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-back:hover {
+      background: var(--accent-color);
+      color: #000;
+      transform: translateY(-2px);
+    }
+
+    /* Animasi Roll */
+    .rolling { animation: rollAnim 0.6s ease-out; }
+    @keyframes rollAnim {
+      0% { transform: rotateX(0) rotateY(0); }
+      100% { transform: rotateX(720deg) rotateY(360deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="section">
+      <h2>🎲 Dadu Motivasi</h2>
+      <p class="sub-text">Klik dadu buat mulai</p>
+      
+      <div id="dice-container">
+        <div class="dice" id="dice">
+          <div class="face"><div class="dot" style="top:45%; left:45%"></div></div>
+          <div class="face">
+            <div class="dot" style="top:20%; left:20%"></div>
+            <div class="dot" style="top:70%; left:70%"></div>
+          </div>
+          <div class="face">
+            <div class="dot" style="top:20%; left:20%"></div>
+            <div class="dot" style="top:45%; left:45%"></div>
+            <div class="dot" style="top:70%; left:70%"></div>
+          </div>
+          <div class="face">
+            <div class="dot" style="top:20%; left:20%"></div><div class="dot" style="top:20%; left:70%"></div>
+            <div class="dot" style="top:70%; left:20%"></div><div class="dot" style="top:70%; left:70%"></div>
+          </div>
+          <div class="face">
+            <div class="dot" style="top:20%; left:20%"></div><div class="dot" style="top:20%; left:70%"></div>
+            <div class="dot" style="top:45%; left:45%"></div>
+            <div class="dot" style="top:70%; left:20%"></div><div class="dot" style="top:70%; left:70%"></div>
+          </div>
+          <div class="face">
+            <div class="dot" style="top:20%; left:20%"></div><div class="dot" style="top:20%; left:45%"></div><div class="dot" style="top:20%; left:70%"></div>
+            <div class="dot" style="top:70%; left:20%"></div><div class="dot" style="top:70%; left:45%"></div><div class="dot" style="top:70%; left:70%"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="motivasi">"Hidup keras? Iya. Lu juga keras kepala."</div>
+      
+      <a href="Anggota kelas.html" class="btn-back">Kembali</a>
+    </div>
+  </div>
+
+  <script>
+    const kutipan = [
+      "Kamu gak sendirian. Banyak yang nunda kayak lu.",
+      "Hidup keras? Iya. Lu juga keras kepala.",
+      "Sedih boleh, nangis boleh. Tapi jangan berhenti.",
+      "Lu bukan males, lu cuma kebanyakan alesan.",
+      "Istirahat dulu gak apa-apa. Asal balik lagi.",
+      "Lu belum sukses bukan berarti lu gagal.",
+      "Jangan bandingin prosesmu dengan hasil orang lain."
+    ];
+
+    document.getElementById("dice-container").onclick = function() {
+      const dice = document.getElementById("dice");
+      dice.classList.add("rolling");
+
+      // Efek getar sederhana (jika didukung HP)
+      if (window.navigator.vibrate) {
+        window.navigator.vibrate(50);
+      }
+
+      setTimeout(() => {
+        dice.classList.remove("rolling");
+        const rotations = [
+          "rotateX(0deg) rotateY(0deg)",
+          "rotateX(0deg) rotateY(180deg)",
+          "rotateX(0deg) rotateY(90deg)",
+          "rotateX(0deg) rotateY(-90deg)",
+          "rotateX(-90deg) rotateY(0deg)",
+          "rotateX(90deg) rotateY(0deg)"
+        ];
+        dice.style.transform = rotations[Math.floor(Math.random() * rotations.length)];
+        const quote = kutipan[Math.floor(Math.random() * kutipan.length)];
+        document.getElementById("motivasi").innerHTML = `"${quote}"`;
+      }, 600);
+    };
+  </script>
+</body>
+</html>

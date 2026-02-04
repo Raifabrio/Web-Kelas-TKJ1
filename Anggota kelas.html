@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anggota kelas  C Engineering 1</title>
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">  
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+  <style>
+   *
+{
+      box-sizing: border-box;
+      font-family: "Inter", sans-serif;
+      margin: 0;
+      padding: 0;
+   
+    }
+
+  .bnav,  
+  .bnav *, 
+  .nav-item, 
+  .nav-item * {
+  -webkit-user-select: none !important; 
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+}
+
+ body {
+  min-height: 100vh;
+  background: 
+    linear-gradient(rgba(75, 43, 127, 0.75), rgba(13, 48, 84, 0.85)),
+    url('membertkj1/bg.jpg'); /* path gambar sama kayak di utama.html */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow-x: hidden;
+  padding: 60px 20px 120px;
+  box-sizing: border-box;
+}
+
+    h1 {
+      font-size: 30px;
+      font-weight: 800;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 14px;
+      width: 100%;
+      max-width: 700px;
+    }
+
+    .gal-item {
+      height: 120px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .gal-item:hover {
+      background: rgba(255,255,255,0.15);
+      transform: scale(1.05);
+    }
+
+  /* transisi */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeUpText {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+h1 {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeUpText 700ms cubic-bezier(.22,.9,.35,1) forwards;
+  animation-delay: 0.2s;
+}
+
+
+.carousel {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 800ms cubic-bezier(.22,.9,.35,1) forwards;
+  animation-delay: 0.4s;
+}
+
+
+.gal-item {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 700ms cubic-bezier(.22,.9,.35,1) forwards;
+}
+
+
+.gal-item:nth-child(1) { animation-delay: 0.5s; }
+.gal-item:nth-child(2) { animation-delay: 0.6s; }
+.gal-item:nth-child(3) { animation-delay: 0.7s; }
+.gal-item:nth-child(4) { animation-delay: 0.8s; }
+.gal-item:nth-child(5) { animation-delay: 0.9s; }
+.gal-item:nth-child(6) { animation-delay: 1s; }
+.gal-item:nth-child(7) { animation-delay: 1.1s; }
+
+
+
+/* ===== Efek Muncul di Bagian Atas ===== */
+.title {
+  opacity: 0;
+  transform: translateY(15px);
+  animation: fadeUpText 700ms cubic-bezier(.22,.9,.35,1) forwards;
+  animation-delay: 0.2s;
+}
+
+.subtitle {
+  opacity: 0;
+  transform: translateY(15px);
+  animation: fadeUpText 700ms cubic-bezier(.22,.9,.35,1) forwards;
+  animation-delay: 0.4s;
+}
+
+/*Animasi */
+.card.leader {
+  opacity: 0;
+  transform: translateY(25px);
+  animation: fadeUp 700ms cubic-bezier(.22,.9,.35,1) forwards;
+  animation-delay: 0.5s;
+}
+
+.card.member {
+  opacity: 0;
+  transform: translateY(25px);
+  animation: fadeUp 700ms cubic-bezier(.22,.9,.35,1) forwards;
+}
+
+
+.card.member:nth-child(1) { animation-delay: 0.6s; }
+.card.member:nth-child(2) { animation-delay: 0.7s; }
+.card.member:nth-child(3) { animation-delay: 0.8s; }
+.card.member:nth-child(4) { animation-delay: 0.9s; }
+.card.member:nth-child(5) { animation-delay: 1s; }
+
+
+
+    h1 {
+      font-size: 32px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 10px;
+      color: #ffffff;
+    }
+
+    h1 span {
+      color: #7bc9ff;
+      text-shadow: 0 0 10px rgba(123, 201, 255, 0.4);
+    }
+
+    .org-chart {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+      margin-top: 40px;
+      width: 100%;
+      max-width: 800px;
+    }
+
+    .level {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 30px;
+      padding: 10px 20px;
+      color: #fff;
+      font-weight: 500;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      text-align: center;
+      min-width: 100px;
+      position: relative;
+    }
+
+    .role {
+      font-size: 13px;
+      opacity: 0.8;
+      font-weight: 400;
+    }
+
+    /* Garis penghubung */
+    .line-down {
+      position: relative;
+    }
+
+    .line-down::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      width: 2px;
+      height: 30px;
+      background: var(--line);
+      transform: translateX(-50%);
+    }
+
+    .level::before {
+      content: "";
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60%;
+      height: 2px;
+      background: var(--line);
+    }
+
+    /* Transisi halus */
+    .card {
+      transition: all 0.3s ease;
+    }
+    .card:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: scale(1.05);
+    }
+
+    /* Animasi background */
+    @keyframes bgFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .title {
+  text-align: center;
+  width: 100%;
+  font-size: 26px;
+  font-weight: 800;
+  color: #fff;
+  margin-top: 10px;      
+  margin-bottom: 20px; 
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 15px;
+  opacity: 0.8;
+  font-weight: 500;
+  color: #fff;
+}
+
+/* ===== BOTTOM NAV ===== */
+.bnav {
+  position: fixed;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 34px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  padding: 10px 28px;
+  border-radius: 40px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.nav-item i {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  transition: all 0.3s ease;
+}
+
+.nav-item span {
+  font-size: 11px;
+  color: #e0e0e0;
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+/* Hover effect */
+.nav-item:hover i {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.1);
+}
+
+/* Tombol tengah (home) — sedikit lebih mencolok */
+.nav-item.center i {
+  background: rgba(255, 255, 255, 0.25);
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.25);
+  width: 46px;
+  height: 46px;
+  font-size: 20px;
+}
+
+/* Hover */
+.nav-item:hover i {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.1);
+}
+
+/* Center (Home) */
+.nav-item.center i {
+  background: rgba(255, 255, 255, 0.25);
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  width: 46px;
+  height: 46px;
+  font-size: 18px;
+  box-shadow: 0 0 10px rgba(255,255,255,0.25);
+}
+
+
+
+/* CARD ANGGOTA KELAS  */
+.card-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+/* Bagian paling atas (ketua kelas) */
+.card.leader {
+  width: 280px;
+  height: 380px;
+  border-radius: 20px;
+}
+
+/* Barisan anggota di bawah */
+.member-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  justify-items: center;
+  width: 100%;
+  max-width: 800px;
+  margin-top: 30px;
+}
+
+@media (max-width: 600px) {
+  .member-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.card.member {
+  width: 180px;
+  height: 280px;
+}
+
+
+/* Efek dasar */
+.card {
+  position: relative;
+  overflow: hidden;
+  transition: 0.4s;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.4s;
+  border-radius: inherit;
+}
+
+.card img {
+  display: block;
+}
+
+.layer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 75%;
+  background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0));
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.info {
+  position: absolute;
+  bottom: -50%;
+  padding: 15px 15px 5px 15px;
+  opacity: 0;
+  color: #fff;
+  transition: 0.5s bottom, 1s opacity;
+  width: 100%; 
+  text-align: center;
+}
+
+.card:hover .info {
+  bottom: 0px;
+  opacity: 1;
+}
+
+
+.info h1 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 0; 
+}
+
+.info p {
+  font-size: 13px;
+  margin-top: 2px;
+  opacity: 0.85;
+}
+
+.info h1 {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.info p {
+  font-size: 13px;
+  margin-top: 4px;
+  opacity: 0.85;
+}
+
+.info button {
+  background: #490CCC;
+  border: none;
+  padding: 6px 10px;
+  font-weight: bold;
+  border-radius: 8px;
+  margin-top: 8px;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.info button:hover {
+  background: #5d25ff;
+}
+
+/* Hover efek */
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card:hover img {
+  transform: scale(1.1);
+  filter: brightness(0.6);
+}
+
+.card:hover .layer {
+  opacity: 1;
+}
+
+.card:hover .info {
+  bottom: 0px;
+  opacity: 1;
+}
+
+
+.card-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 40px;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 900px;
+}
+
+  
+.card.member,
+.card.leader {
+  padding: 0; /* ilangin padding biar gambar bisa full */
+}
+
+.card.member img,
+.card.leader img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+  display: block;
+}
+
+  .card.member * {
+  margin: 0;
+  padding: 0;
+}
+ 
+
+/* ===== FIX BUAT HP ===== */
+@media (max-width: 600px) {
+  .card.member {
+    width: 140px;
+    height: 210px;
+  }
+
+  .member-grid {
+    gap: 20px;
+  }
+
+  .card.leader {
+    width: 240px;
+    height: 330px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  .title {
+    font-size: 22px;
+  }
+}
+
+
+/* ===== MENU SIDEBAR ===== */
+
+.menu-toggle {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #fff;
+  font-size: 24px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.menu-toggle.hidden {
+  opacity: 0;
+  transform: scale(0.8);
+  pointer-events: none; /* biar ga bisa di klik pas ilang */
+}
+
+.menu-toggle:hover:not(.hidden) {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: -300px; /* awalnya tersembunyi */
+  width: 300px;
+  height: 100vh;
+  background: rgba(30, 30, 40, 0.7); /* transparan */
+  backdrop-filter: blur(12px);
+  box-shadow: 4px 0 20px rgba(0,0,0,0.3);
+  z-index: 999;
+  transition: left 0.4s ease;
+  padding: 20px; /* padding tetep, biar ada jarak dari pinggir layar */
+  display: flex;
+  flex-direction: column;
+}
+
+.side-menu.active {
+  left: 0; /* muncul saat aktif */
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 50%;
+  transition: background 0.2s;
+  align-self: flex-end; /* taruh di pojok kanan */
+  margin-bottom: 20px; /* jarak antara tombol dan list */
+}
+
+.close-btn:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.menu-list li {
+  margin-bottom: 10px;
+}
+
+.menu-list a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.menu-list a:hover,
+.menu-list a:focus {
+  background: rgba(255,255,255,0.1);
+  transform: translateX(5px);
+}
+
+.menu-list a i {
+  font-size: 18px;
+  width: 24px;
+  text-align: center;
+}
+
+/* Overlay untuk menutup menu saat klik di luar */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 998;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+ /* ===== AKHIR MENU SIDEBAR ===== */
+ /* ===== LOGIN BUTTON (POJOK KANAN ATAS) ===== */
+.login-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #fff;
+  font-size: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+.login-toggle:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+/* Sembunyikan di HP kecil (opsional) */
+@media (max-width: 480px) {
+  .login-toggle {
+    width: 42px;
+    height: 42px;
+    font-size: 18px;
+  }
+}
+
+
+/* ===== LOGIN MODAL ===== */
+.login-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0,0,0,0.6);
+  display: none; /* PENTING */
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+.login-wrapper.active {
+  display: flex;
+}
+
+
+.login-card {
+  width: 380px;
+  background: #fff;
+  padding: 32px 30px;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.15);
+}
+
+.login-card h2 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #ac9e9e;
+}
+
+.login-card .subtitle {
+  font-size: 13px;
+  color: #1b1818;
+  margin-bottom: 22px;
+}
+
+.login-card input {
+  width: 100%;
+  padding: 13px 14px;
+  margin-bottom: 14px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+.login-card input:focus {
+  outline: none;
+  border-color: #872787;
+  box-shadow: 0 0 0 3px rgba(182, 84, 218, 0.15);
+}
+
+
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  margin-bottom: 16px;
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 13px;
+  border-radius: 10px;
+  border: none;
+  background:  #8a25b2;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.btn-primary:hover {
+  background: #8a25b2;
+}
+
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 22px 0;
+  color: #999;
+  font-size: 12px;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #e5e5e5;
+}
+
+
+.google-btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  background: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: 0.25s;
+}
+
+.google-btn:hover {
+  background: #f7f7f7;
+  border-color: #ccc;
+}
+
+.google-btn img {
+  width: 18px;
+}
+
+/* Judul tengah */
+.login-card h2 {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #444;
+}
+
+.login-card .subtitle {
+  text-align: center;
+  font-size: 13px;
+  color: #777;
+  margin-bottom: 22px;
+}
+
+/* Area remember + forgot */
+.login-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  font-size: 12px;
+}
+
+/* remember me kiri */
+.login-options .remember {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+/* forgot kanan */
+.login-options .forgot {
+  text-decoration: none;
+  font-size: 12px;
+  color: #0c040c;
+}
+
+.login-options .forgot:hover {
+  text-decoration: underline;
+}
+.login-options {
+  color: #444;
+}
+.login-options .remember {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #444;
+}
+
+.login-options input[type="checkbox"] {
+  accent-color: #080208;
+  cursor: pointer;
+}
+
+ </style>
+</head>
+
+<body>
+<!-- Tombol Menu (pojok kiri atas) -->
+<button id="menuToggle" class="menu-toggle">
+  <i class="fa-solid fa-bars"></i>
+</button>
+
+<!-- Tombol User (pojok kanan atas) -->
+<button id="loginBtn" class="login-toggle">
+  <i class="fa-solid fa-user"></i>
+</button>
+
+<div class="title">
+  Structure of <span class="highlight">XII TKJ 1</span>
+</div>
+
+<div class="card-group">
+
+  <!-- Ketua kelas -->
+  <div class="card leader">
+    <img src="membertkj1/walikelas.jpeg" alt="Foto Anggota 1">
+    <div class="layer"></div>
+    <div class="info">
+      <h1>Ika Ratnawati.Spd.Gr</h1>
+      <p>Wali Kelas XII TKJ 1 Letting 10</p>
+    </div>
+  </div><!-- Barisan anggota lain -->
+<div class="member-grid">
+  <div class="card member">
+    <img src="membertkj1/satria.jpeg" alt="Foto Anggota 2">
+    <div class="layer"></div>
+    <div class="info">
+      <h1>Satria</h1>
+      <p>Poltar</p>
+    </div>
+  </div>
+
+  <div class="card member">
+    <img src="membertkj1/chelsea.jpeg" alt="Foto Anggota 3">
+    <div class="layer"></div>
+    <div class="info">
+      <h1>Chelsea</h1>
+      <p>Danton</p>
+    </div>
+  </div>
+
+  <div class="card member">
+    <img src="membertkj1/kaffa.jpeg" alt="Foto Anggota 4">
+    <div class="layer"></div>
+    <div class="info">
+      <h1>Kaffa</h1>
+      <p>Member</p>
+    </div>
+  </div>
+
+  <div class="card member">
+    <img src="membertkj1/ahmad.jpeg" alt="Foto Anggota 4">
+    <div class="layer"></div>
+    <div class="info">
+      <h1>Ahmad</h1>
+      <p>Member</p>
+    </div>
+  </div>
+
+  <div class="card member">
+    <img src="membertkj1/tristan.jpeg" alt="Foto Anggota 4">
+    <div class="layer"></div>
+    <div class="info">
+      <h1>Tristan</h1>
+      <p>Bendahara</p>
+    </div>
+  </div>
+
+  <div class="card member">
+    <img src="membertkj1/qila.jpeg  " alt="Foto Anggota 4">
+    <div class="layer"></div>
+    <div class="info">
+      <h1>Aqila</h1>
+      <p>Danru</p>
+    </div>
+  </div>
+
+  <div class="card member">
+    <img src="membertkj1/baihaqi.jpeg" alt="Foto Anggota 4">
+    <div class="layer"></div>
+    <div class="info">
+      <h1>Baihaqi</h1>
+      <p>Member</p>
+    </div>
+  </div>
+
+  <div class="card member">
+    <img src="membertkj1/evan.jpeg" alt="Foto Anggota 4">
+    <div class="layer"></div>
+    <div class="info">
+      <h1>Evan</h1>
+      <p>Danru</p>
+    </div>
+  </div>
+
+  <div class="card member">
+    <img src="membertkj1/fahri.jpeg" alt="Foto Anggota 4">
+    <div class="layer"></div>
+    <div class="info">
+      <h1>Fahri</h1>
+      <p>Member</p>
+    </div>
+  </div>
+
+  <div class="card member">
+    <img src="membertkj1/atta.jpeg" alt="Foto Anggota 4">
+    <div class="layer"></div>
+    <div class="info">
+      <h1>Atthalah</h1>
+      <p>Member</p>
+    </div>
+  </div>
+
+  <div class="card member">
+    <img src="membertkj1/fadli.jpeg" alt="Foto Anggota 4">
+    <div class="layer"></div>
+    <div class="info">
+      <h1>Fadly</h1>
+      <p>Osis</p>
+    </div>
+  </div>
+
+  <div class="card member">
+    <img src="membertkj1/aziz.jpeg" alt="Foto Anggota 4">
+    <div class="layer"></div>
+    <div class="info">
+      <h1>Aziz</h1>
+      <p>Member</p>
+    </div>
+  </div>
+
+  <div class="card member">
+    <img src="membertkj1/raihan.jpeg" alt="Foto Anggota 4">
+    <div class="layer"></div>
+    <div class="info">
+      <h1>Raihan</h1>
+      <p>Member</p>
+    </div>
+  </div>
+
+  <div class="card member">
+    <img src="membertkj1/muti.jpeg" alt="Foto Anggota 4">
+    <div class="layer"></div>
+    <div class="info">
+      <h1>Muti</h1>
+      <p>Sekretaris</p>
+    </div>
+  </div>
+
+  <div class="card member">
+    <img src="membertkj1/nadia.jpeg" alt="Foto Anggota 4">
+    <div class="layer"></div>
+    <div class="info">
+      <h1>Nadia</h1>
+      <p>Member</p>
+    </div>
+  </div>
+
+  <div class="card member">
+    <img src="membertkj1/naqi.jpeg" alt="Foto Anggota 4">
+    <div class="layer"></div>
+    <div class="info">
+      <h1>Naqi</h1>
+      <p>Member</p>
+    </div>
+  </div>
+
+  <div class="card member">
+    <img src="membertkj1/nopal.jpeg" alt="Foto Anggota 4">
+    <div class="layer"></div>
+    <div class="info">
+      <h1>Naufal</h1>
+      <p>Bendahara</p>
+    </div>
+  </div>
+
+  <div class="card member">
+    <img src="membertkj1/naura.jpeg" alt="Foto Anggota 4">
+    <div class="layer"></div>
+    <div class="info">
+      <h1>Naura</h1>
+      <p>Member</p>
+    </div>
+  </div>
+
+  <div class="card member">
+    <img src="membertkj1/olip.jpeg" alt="Foto Anggota 4">
+    <div class="layer"></div>
+    <div class="info">
+      <h1>Olivia</h1>
+      <p>Member</p>
+    </div>
+  </div>
+
+  <div class="card member">
+    <img src="membertkj1/raden.jpeg" alt="Foto Anggota 4">
+    <div class="layer"></div>
+    <div class="info">
+      <h1>Raden</h1>
+      <p>Member</p>
+    </div>
+  </div>
+
+  <div class="card member">
+    <img src="membertkj1/rangga.jpeg" alt="Foto Anggota 4">
+    <div class="layer"></div>
+    <div class="info">
+      <h1>Rangga</h1>
+      <p>Danru</p>
+    </div>
+  </div>
+
+  <div class="card member">
+    <img src="membertkj1/rena.jpeg" alt="Foto Anggota 4">
+    <div class="layer"></div>
+    <div class="info">
+      <h1>Reynata</h1>
+      <p>Member</p>
+    </div>
+  </div>
+
+  <div class="card member">
+    <img src="membertkj1/riffat.jpeg" alt="Foto Anggota 4">
+    <div class="layer"></div>
+    <div class="info">
+      <h1>Riffat</h1>
+      <p>Osis</p>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Side Menu -->
+<div id="sideMenu" class="side-menu">
+  <button id="closeMenu" class="close-btn">
+    <i class="fa-solid fa-xmark"></i>
+  </button>
+<ul class="menu-list">
+  <li><a href="spotify.html"><i class="fa-brands fa-spotify"></i> Spotify</a></li>
+  <li><a href="motivation.html"><i class="fa-solid fa-quote-right"></i> Quotes</a></li>
+  
+  <li><a href="https://obrolan-publikxy.my.canva.site/" target="_blank" rel="noopener"><i class="fa-solid fa-comment-dots"></i> Komentar</a></li> 
+  
+  <li><a href="tentangkami.html"><i class="fa-solid fa-circle-info"></i> Tentang Kami</a></li>
+</ul>
+</div>
+
+
+<!-- Bottom nav -->
+<div class="bnav">
+  <div class="nav-item" onclick="window.location.href='Gallery.html'">
+    <i class="fa-regular fa-image"></i>
+    <span>Gallery</span>
+  </div>
+
+  <div class="nav-item center" onclick="window.location.href='utama.html'">
+    <i class="fa-solid fa-house"></i>
+  </div>
+
+  <div class="nav-item" onclick="window.location.href='Schedules.html'">
+    <i class="fa-regular fa-calendar"></i>
+    <span>Schedules</span>
+  </div>
+</div>
+
+<!-- Modal Login -->
+<div class="login-wrapper" id="loginWrapper">
+  <div class="login-card">
+    <h2>Welcome</h2>
+    <p class="subtitle">We are happy to have you back!</p>
+
+    <form id="loginForm">
+      <input type="email" id="email" placeholder="Email or phone" required />
+      <input type="password" id="password" placeholder="Password" required />
+
+     <div class="login-options">
+  <label class="remember">
+    <input type="checkbox">
+    <span>Remember me</span>
+  </label>
+  <a href="#" class="forgot">Forgot password?</a>
+  </div>
+
+
+      <button type="submit" class="btn-primary">Sign In</button>
+    </form>
+
+    <div class="divider">Or</div>
+
+    <button id="googleLogin" class="google-btn">
+      <img src="https://developers.google.com/identity/images/g-logo.png">
+      <span>Sign in with Google</span>
+    </button>
+  </div>
+</div>
+
+
+
+
+
+
+<script>
+  // Ambil elemen
+const menuToggle = document.getElementById('menuToggle');
+const sideMenu = document.getElementById('sideMenu');
+const closeMenu = document.getElementById('closeMenu');
+const overlay = document.createElement('div');
+overlay.className = 'overlay';
+document.body.appendChild(overlay);
+
+
+// Fungsi buka menu
+function openMenu() {
+  sideMenu.classList.add('active');
+  overlay.classList.add('active');
+  menuToggle.classList.add('hidden'); // Sembunyiin tombol
+}
+
+// Fungsi tutup menu
+function closeMenuFunc() {
+  sideMenu.classList.remove('active');
+  overlay.classList.remove('active');
+  setTimeout(() => {
+    menuToggle.classList.remove('hidden'); // Munculin balik tombol setelah animasi
+  }, 300); 
+}
+
+// Event listener
+menuToggle.addEventListener('click', openMenu);
+closeMenu.addEventListener('click', closeMenuFunc);
+overlay.addEventListener('click', closeMenuFunc);
+
+// Tutup menu jika tekan ESC
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && sideMenu.classList.contains('active')) {
+    closeMenuFunc();
+  }
+});
+</script>
+
+
+
+<script>
+const loginBtn = document.getElementById('loginBtn');
+const loginWrapper = document.getElementById('loginWrapper');
+
+loginBtn.addEventListener('click', () => {
+  loginWrapper.classList.add('active');
+});
+
+// klik luar nutup
+loginWrapper.addEventListener('click', () => {
+  loginWrapper.classList.remove('active');
+});
+
+// stop klik di card
+document.querySelector('.login-card')
+  .addEventListener('click', e => e.stopPropagation());
+</script>
+
+<script>
+const sb = supabase.createClient(
+  'https://bnesqugdwnzycbjvpegi.supabase.co',
+  'sb_publishable_Zqf6HdjeaQWDZymjHhB49w_5IJb9eWb'
+);
+
+// email login
+document.getElementById('loginForm').addEventListener('submit', async e => {
+  e.preventDefault();
+ const email = document.getElementById('email').value;
+const password = document.getElementById('password').value;
+
+  const { error } = await sb.auth.signInWithPassword({ email, password });
+  if (error) alert(error.message);
+  else location.reload();
+});
+
+// google login
+document.getElementById('googleLogin').onclick = async () => {
+  await sb.auth.signInWithOAuth({
+    provider: 'google',
+    options: {
+      redirectTo: window.location.origin + '/utama.html'
+    }
+  });
+};
+</script>
+
+
+
+</body>
+</html>
