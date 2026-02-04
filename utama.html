@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home - C Engineering 1</title>
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">  
+   <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+
+  * {
+  -webkit-tap-highlight-color: transparent;
+}
+
+  *:focus {
+  outline: none !important; 
+}
+
+    :root {
+      --bg1: #4b2b7f;
+      --bg2: #0b7aa1;
+      --card: rgba(255, 255, 255, 0.06);
+      --muted: #cbd5e1;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: "Inter", sans-serif;
+      margin: 0;
+    }
+
+   body {
+  min-height: 100vh;
+  /* Ganti linear-gradient jadi foto + gradient transparan */
+  background: 
+    linear-gradient(rgba(75, 43, 127, 0.75), rgba(13, 48, 84, 0.85)), 
+    url('home/Bacground.jpg'); /* path ke foto  */
+  background-size: cover;       /* biar foto full layar */
+  background-position: center;  /* fokus di tengah */
+  background-attachment: fixed; 
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+  .bnav,  /*biar kgk nge block text*/
+  .bnav *, 
+  .nav-item, 
+  .nav-item * {
+  -webkit-user-select: none !important; 
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+}
+
+
+    .container {
+      width: 100%;
+      max-width: 460px;
+      padding: 20px;
+    }
+
+    /* ===== HERO SECTION ===== */
+    .hero {
+      text-align: center;
+      padding-top: 20px;
+      margin-bottom: 14px;
+    }
+
+   /* Animasi untuk hero text (judul utama & subjudul) */
+.hero h1 {
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUpText 700ms cubic-bezier(.22,.9,.35,1) forwards;
+  animation-delay: 0.2s;
+}
+
+.hero h2 {
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: -6px;     
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUpText 700ms cubic-bezier(.22,.9,.35,1) forwards;
+  animation-delay: 0.45s;
+}
+
+
+/* Reuse keyframes yang udah dipakai welcome text */
+@keyframes fadeUpText {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+  /* container gambar (tetap di tengah) */
+.welcome {
+  position: relative;
+  margin-top: 16px;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+/* gambar tetap punya animasi sendiri */
+.welcome img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  filter: brightness(0.7);
+  border-radius: 14px;
+  animation: fadeUp 700ms cubic-bezier(.22,.9,.35,1) both;
+}
+
+/* posisi tengah untuk wrapper  */
+.welcome-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* FIX: posisi pusat */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  pointer-events: none;
+}
+
+/* reset default margins */
+.welcome-text h3, .welcome-text p {
+  margin: 0;
+  padding: 0;
+}
+
+/* judul & subtext animasi vertical (Hanya translateY + opacity) */
+.welcome-text h3 {
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #fff;
+  text-shadow: 0 6px 18px rgba(0,0,0,0.45);
+  opacity: 0;
+  transform: translateY(12px);
+  animation: fadeUpText 700ms cubic-bezier(.22,.9,.35,1) forwards;
+  animation-delay: 0.30s; /* muncul setelah gambar */
+}
+
+.welcome-text p {
+  margin-top: 6px;
+  font-size: 14px;
+  letter-spacing: 6px;
+  color: rgba(255,255,255,0.95);
+  text-shadow: 0 4px 12px rgba(0,0,0,0.35);
+  opacity: 0;
+  transform: translateY(12px);
+  animation: fadeUpText 700ms cubic-bezier(.22,.9,.35,1) forwards;
+  animation-delay: 0.55s; /* sedikit telat dari judul */
+}
+
+/* keyframes untuk teks (HANYA translateY, bukan translateX) */
+@keyframes fadeUpText {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* keyframes gambar (boleh tetap) */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* responsive kecil */
+@media (max-width: 420px){
+  .welcome img { height: 160px; }
+  .welcome-text h3 { font-size: 26px; }
+  .welcome-text p { font-size: 12px; letter-spacing: 4px; }
+}
+
+
+    /* ===== CARD GRID ===== */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 16px;
+      backdrop-filter: blur(8px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: scale(1.05);
+    }
+
+    .card-title {
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .card a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .card a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 14px;
+  margin-top: -5px;   /* TARIK KE ATAS */
+  display: inline-block;
+    }
+
+    .card, .card * {
+  color: #fff !important;
+  }
+
+ 
+
+ /* ===== BOTTOM NAV ===== */
+.bnav {
+  position: fixed;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 34px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  padding: 10px 28px;
+  border-radius: 40px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.nav-item i {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  transition: all 0.3s ease;
+}
+
+.nav-item span {
+  font-size: 11px;
+  color: #e0e0e0;
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+/* Hover effect */
+.nav-item:hover i {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.1);
+}
+
+/* Tombol tengah (home) — sedikit lebih mencolok */
+.nav-item.center i {
+  background: rgba(255, 255, 255, 0.25);
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.25);
+  width: 46px;
+  height: 46px;
+  font-size: 20px;
+}
+
+.card {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 16px;
+  backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+  cursor: pointer; /* biar nunjukin bisa diklik */
+}
+
+.card:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(1.05);
+}
+
+.card a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 14px;
+  pointer-events: none; /* biar klik di area lain juga tetep jalan */
+}
+
+.card-title i {
+  margin-right: 8px;
+}
+
+.card-title {
+  display: flex;
+  flex-direction: column; /* ikon di atas teks */
+  align-items: flex-start; /* teks tetap kiri */
+  justify-content: center;
+  font-weight: 700;
+  margin-bottom: 8px;
+  text-align: left; /* pastikan teks kiri */
+}
+
+.card-title i {
+  font-size: 26px;
+  margin-bottom: 6px; /* jarak antara ikon dan teks */
+}
+
+/* ===== BOTTOM NAV ===== */
+.bnav {
+  position: fixed;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 34px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  padding: 10px 28px;
+  border-radius: 40px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.nav-item i {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  transition: all 0.3s ease;
+}
+
+.nav-item span {
+  font-size: 11px;
+  color: #e0e0e0;
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+/* Hover effect */
+.nav-item:hover i {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.1);
+}
+
+/* Tombol tengah (home) — sedikit lebih mencolok */
+.nav-item.center i {
+  background: rgba(255, 255, 255, 0.25);
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.25);
+  width: 46px;
+  height: 46px;
+  font-size: 20px;
+}
+
+  </style>
+</head>
+
+
+<body>
+  <div class="container">
+    <!-- Hero section -->
+    <div class="hero">
+      <h1>C Engineering 1</h1>
+      <h2>SMK GLOBAL MULIA</h2>
+      <div class="welcome">
+        <img src="home/wisuda.jpg" alt="1" class="card-img-top">
+
+
+        <div class="welcome-text">
+          <h3>WELCOME</h3>
+          <p>EVERYONE</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cards -->
+  <div class="grid animate">
+<div class="card" onclick="window.open('https://www.instagram.com/c_engineering1?igsh=eWdkMXFvdmFlOHht', '_blank')">    <div class="card-title">
+      <i class="fa-brands fa-instagram"></i>
+      <span>Instagram Kami</span>
+    </div>
+    <a href="https://www.instagram.com/c_engineering1?igsh=eWdkMXFvdmFlOHht" target="_blank">Kunjungi →</a>
+  </div>
+
+  <div class="card" onclick="window.location.href='Anggota kelas.html'">
+    <div class="card-title">
+      <i class="fa-solid fa-user"></i>
+      <span>Anggota Kelas</span>
+    </div>
+    <a href="Anggota kelas.html">Lihat →</a>
+  </div>
+
+  <div class="card" onclick="window.open('https://www.tiktok.com/@tadikaaamesraa?_r=1&_t=ZS-93LKS8f1yyI', '_blank')">
+    <div class="card-title">
+      <i class="fa-brands fa-tiktok"></i>
+      <span>Tiktok Kami</span>
+    </div>
+    <a href="https://www.tiktok.com/@tadikaaamesraa?_r=1&_t=ZS-93LKS8f1yyI" target="_blank">Kunjungi →</a>
+  </div>
+
+  <div class="card" onclick="window.location.href='pesan anonim.html'">
+    <div class="card-title">
+      <i class="fa-regular fa-paper-plane"></i>
+      <span>Pesan Anonim</span>
+    </div>
+    <a href="pesan anonim.html">Mulai →</a>
+  </div>
+</div>
+
+
+
+<!-- Bottom nav -->
+<div class="bnav">
+  <div class="nav-item" onclick="window.location.href='Gallery.html'">
+    <i class="fa-regular fa-image"></i>
+    <span>Gallery</span>
+  </div>
+
+  <div class="nav-item center" onclick="window.location.href='utama.html'">
+    <i class="fa-solid fa-house"></i>
+  </div>
+
+  <div class="nav-item" onclick="window.location.href='Schedules.html'">
+    <i class="fa-regular fa-calendar"></i>
+    <span>Schedules</span>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script>
+
+
+
+</body>
+</html>
